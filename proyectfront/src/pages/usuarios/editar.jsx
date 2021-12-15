@@ -12,46 +12,73 @@ import ButtonLoading from 'components/ButtonLoading';
 import {  Enum_EstadoUsuario } from 'utils/enums';
 
 const EditarUsuario = () => {
-  const [userData, setUserData] = useState({});
+  // const [userData, setUserData] = useState({});
   const { form, formData, updateFormData } = useFormData(null);
   const { _id } = useParams();
   const {
-    loading: loadingQuery,
-    error: errorQuery,
-    data: dataQuery,
+    // loading: loadingQuery,
+    // error: errorQuery,
+    // data: dataQuery,
+    data: queryData,
+    error: queryError,
+    loading: queryLoading,
   } = useQuery(GET_USUARIO, {
     variables: { _id },
   });
 
-  const [editUser, { data: dataMutation, loading: loadingMutation, error: errorMutation }] =
+  const [editarUsuario, { data: mutationData, loading: mutationLoading, error: mutationError }] =
     useMutation(EDITAR_USUARIO);
 
-  const submitForm = async (e) => {
+  // const submitForm = async (e) => {
+  //   e.preventDefault();
+  //   console.log(formData);
+  //   await editUser({
+  //     variables: { _id, ...formData },
+  //   });
+  // };
+  const submitForm = (e) => {
     e.preventDefault();
-    console.log(formData);
-    await editUser({
+    delete formData.rol;
+    editarUsuario({
       variables: { _id, ...formData },
     });
   };
 
+  // useEffect(() => {
+  //   if (dataMutation) {
+  //     toast.success('Usuario modificado con exito');
+  //     setUserData(dataMutation.editUser);
+  //   }
+  //   if (dataQuery) {
+  //     console.log('dq', dataQuery);
+  //     setUserData(dataQuery.Usuario);
+  //   }
+  // }, [dataMutation, dataQuery]);
+
+  // useEffect(() => {
+  //   if (errorMutation) {
+  //     toast.error('Error modificando el usuario');
+  //   }
+  // }, [errorMutation]);
+
+  // if (loadingQuery) return <div>Loading</div>;
   useEffect(() => {
-    if (dataMutation) {
-      toast.success('Usuario modificado con exito');
-      setUserData(dataMutation.editUser);
+    if (mutationData) {
+      toast.success('Usuario modificado correctamente');
     }
-    if (dataQuery) {
-      console.log('dq', dataQuery);
-      setUserData(dataQuery.Usuario);
-    }
-  }, [dataMutation, dataQuery]);
+  }, [mutationData]);
 
   useEffect(() => {
-    if (errorMutation) {
+    if (mutationError) {
       toast.error('Error modificando el usuario');
     }
-  }, [errorMutation]);
 
-  if (loadingQuery) return <div>Loading</div>;
+    if (queryError) {
+      toast.error('Error consultando el usuario');
+    }
+  }, [queryError, mutationError]);
+
+  if (queryLoading) return <div>Cargando....</div>;
 
   return (
     <div className='flew flex-col w-full h-full items-center justify-center p-10'>
@@ -69,41 +96,41 @@ const EditarUsuario = () => {
           label='Nombre de la persona:'
           type='text'
           name='nombre'
-          defaultValue={userData.nombre}
+          defaultValue={queryData.Usuario.nombre}
           required={true}
         />
         <Input
           label='Apellido de la persona:'
           type='text'
           name='apellido'
-          defaultValue={userData.apellido}
+          defaultValue={queryData.Usuario.apellido}
           required={true}
         />
         <Input
           label='Correo de la persona:'
           type='email'
           name='email'
-          defaultValue={userData.correo}
+          defaultValue={queryData.Usuario.email}
           required={true}
         />
         <Input
           label='Identificación de la persona:'
           type='text'
           name='identificacion'
-          defaultValue={userData.identificacion}
+          defaultValue={queryData.Usuario.identificacion}
           required={true}
         />
         <DropDown
           label='Estado de la persona:'
           name='estado'
-          defaultValue={userData.estado}
+          defaultValue={queryData.Usuario.estado}
           required={true}
           options={Enum_EstadoUsuario}
         />
-        
+        <span>Rol del usuario: {queryData.Usuario.rol}</span>
         <ButtonLoading
           disabled={Object.keys(formData).length === 0}
-          loading={loadingMutation}
+          loading={mutationLoading}
           text='Confirmar'
         />
       </form>

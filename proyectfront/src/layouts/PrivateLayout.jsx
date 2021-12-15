@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { REFRESH_TOKEN } from 'graphql/auth/mutation';
 import 'react-toastify/dist/ReactToastify.css';
+import PrivateRoute from 'components/PrivateRoute';
 
 const PrivateLayout = () => {
   const { authToken, setToken } = useAuth();
@@ -33,9 +34,9 @@ const PrivateLayout = () => {
       setLoadingAuth(false);
     }
   }, [dataMutation, setToken, loadingAuth, navigate]);
-  useEffect( () =>{
-    console.log('Token Actual',authToken);
-  }, [authToken]);
+  // useEffect( () =>{
+  //   console.log('Token Actual',authToken);
+  // }, [authToken]);
 
   // const refresh = useCallback(
   //   async (token) => {

@@ -1,13 +1,16 @@
 {
-  "name": "gestion-de-proyectos-mintic",
+  "name": "proyectfront",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.4.17",
     "@apollo/react-hooks": "^4.0.0",
     "@craco/craco": "^6.4.0",
+    "@emotion/react": "^11.7.0",
+    "@emotion/styled": "^11.6.0",
     "@material-ui/core": "^4.12.3",
     "@mui/material": "^5.2.2",
+    "@mui/styled-engine": "^5.2.4",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -51,5 +54,7 @@
     "autoprefixer": "^9",
     "postcss": "^7",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat"
-  }
+  },
+  "main": "index.js",
+  "license": "MIT"
 }

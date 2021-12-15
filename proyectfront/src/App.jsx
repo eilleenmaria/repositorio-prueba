@@ -1,21 +1,53 @@
-import React, { useState, useEffect, useCallback } from 'react';
+// import React, { useState, useEffect, useCallback } from 'react';
+// import PrivateLayout from 'layouts/PrivateLayout';
+// import { BrowserRouter, Routes, Route } from 'react-router-dom';
+// import { UserContext } from 'context/userContext';
+// import Index from 'pages/Index';
+// import IndexUsuarios from 'pages/usuarios/index';
+// import IndexCategory1 from 'pages/category1/Index';
+// import IndexProyectos from 'pages/proyectos/Index';
+// import IndexInscripciones from 'pages/inscripciones/Index';
+// import Category1 from 'pages/category1/CategoryPage1';
+// import { ApolloProvider, createHttpLink, ApolloClient, InMemoryCache } from '@apollo/client';
+// import { setContext } from '@apollo/client/link/context';
+// import EditarUsuario from 'pages/usuarios/editar';
+// import 'styles/globals.css';
+// import 'styles/tabla.css';
+// import AuthLayout from 'layouts/AuthLayout';
+// import Register from 'pages/auth/register';
+// import Login from 'pages/auth/login';
+// import NuevoProyecto from 'pages/proyectos/NuevoProyecto';
+
+// import { AuthContext } from 'context/authContext';
+// import jwt_decode from 'jwt-decode';
+import React, { useState, useEffect } from 'react';
 import PrivateLayout from 'layouts/PrivateLayout';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { UserContext } from 'context/userContext';
+import {
+  ApolloProvider,
+  ApolloClient,
+  createHttpLink,
+  InMemoryCache,
+} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
 import Index from 'pages/Index';
-import IndexUsuarios from 'pages/usuarios/index';
+//import Page2 from 'pages/Page2';
 import IndexCategory1 from 'pages/category1/Index';
 import Category1 from 'pages/category1/CategoryPage1';
-import { ApolloProvider, createHttpLink, ApolloClient, InMemoryCache } from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
+import IndexUsuarios from 'pages/usuarios';
 import EditarUsuario from 'pages/usuarios/editar';
-import 'styles/globals.css';
-import 'styles/tabla.css';
 import AuthLayout from 'layouts/AuthLayout';
 import Register from 'pages/auth/register';
 import Login from 'pages/auth/login';
 import { AuthContext } from 'context/authContext';
+import IndexProyectos from 'pages/proyectos/Index';
 import jwt_decode from 'jwt-decode';
+import 'styles/globals.css';
+import 'styles/tabla.css';
+import NuevoProyecto from 'pages/proyectos/NuevoProyecto';
+import IndexInscripciones from 'pages/inscripciones/Index';
+//import Profile from 'pages/profile';
 
 // import PrivateRoute from 'components/PrivateRoute';
 
@@ -75,6 +107,7 @@ function App() {
         identificacion: decoded.identificacion,
         email: decoded.email,
         rol: decoded.rol,
+        //foto: decoded.foto,
       });
     }
   }, [authToken]);
@@ -90,6 +123,9 @@ function App() {
                 <Route path='' element={<Index />} />
                 <Route path='usuarios/' element={<IndexUsuarios />} />
                 <Route path='usuarios/editar/:_id' element={<EditarUsuario />} />
+                <Route path='/proyectos' element={<IndexProyectos />} />
+                <Route path='/proyectos/nuevo' element={<NuevoProyecto />} />
+                <Route path='/inscripciones' element={<IndexInscripciones />} />
                 <Route path='category1' element={<IndexCategory1 />} />
                 <Route path='category1/page1' element={<Category1 />} />
               </Route>

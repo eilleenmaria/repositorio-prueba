@@ -13,7 +13,7 @@ const Login = () => {
   const { form, formData, updateFormData } = useFormData();
   const navigate = useNavigate();
 
-  const [login, { data: dataMutation, loading: loadingMutation, error: errorMutation }] =
+  const [login, { data: dataMutation, loading: mutationLoading, error: mutationError }] =
     useMutation(LOGIN);
 
   const submitForm = (e) => {
@@ -46,7 +46,7 @@ const Login = () => {
         <Input name='password' type='password' label='Contraseña' required={true} />
         <ButtonLoading
           disabled={Object.keys(formData).length === 0}
-          loading={loadingMutation}
+          loading={mutationLoading}
           text='Iniciar Sesión'
         />
       </form>

@@ -29,7 +29,7 @@ const Register = () => {
         console.error('MOSTRAR MENSAJE DE ERROR AQUI');
       }
       setToken(dataMutation.registro.token);
-      navigate('/');
+     // navigate('/');
     }
   }, [dataMutation, setToken, navigate]);
 
