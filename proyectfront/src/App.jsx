@@ -47,7 +47,7 @@ import 'styles/globals.css';
 import 'styles/tabla.css';
 import NuevoProyecto from 'pages/proyectos/NuevoProyecto';
 import IndexInscripciones from 'pages/inscripciones/Index';
-//import Profile from 'pages/profile';
+import Profile from 'pages/profile';
 
 // import PrivateRoute from 'components/PrivateRoute';
 
@@ -107,7 +107,7 @@ function App() {
         identificacion: decoded.identificacion,
         email: decoded.email,
         rol: decoded.rol,
-        //foto: decoded.foto,
+        foto: decoded.foto,
       });
     }
   }, [authToken]);
@@ -126,6 +126,7 @@ function App() {
                 <Route path='/proyectos' element={<IndexProyectos />} />
                 <Route path='/proyectos/nuevo' element={<NuevoProyecto />} />
                 <Route path='/inscripciones' element={<IndexInscripciones />} />
+                <Route path='/perfil' element={<Profile />} />
                 <Route path='category1' element={<IndexCategory1 />} />
                 <Route path='category1/page1' element={<Category1 />} />
               </Route>

@@ -5,13 +5,13 @@ const GET_USUARIOS = gql`
     Usuarios(filtro: $filtro) {
   # query Usuarios {
   #   Usuarios {
-      _id
+    _id
       nombre
       apellido
-      identificacion
       email
-      rol
       estado
+      identificacion
+      rol
     }
   }
 `;
@@ -23,10 +23,10 @@ const GET_USUARIO = gql`
       nombre
       apellido
       email
-      identificacion
-      rol
       estado
-       foto
+      identificacion
+      rol   
+      foto
     }
   }
 `;
