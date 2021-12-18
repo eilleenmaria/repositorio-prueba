@@ -19,9 +19,9 @@ const SidebarLinks = () => (
         icon='fas fa-users'
       />
     </PrivateComponent>
-    <SidebarRoute to='/page2' title='Pagina2' icon='fas fa-smile-wink' />
+    {/* <SidebarRoute to='/page2' title='Pagina2' icon='fas fa-smile-wink' />
     <SidebarRoute to='/category1' title='Catego 1' icon='fab fa-amazon' />
-    <SidebarRoute to='/category1/page1' title='Test' icon='fas fa-car' />
+    <SidebarRoute to='/category1/page1' title='Test' icon='fas fa-car' /> */}
     <Logout />
   </ul>
 );
@@ -49,7 +49,7 @@ const Logo = () => (
   <div className='py-3 w-full flex flex-col items-center justify-center'>
     <img src='logo.png' alt='Logo' className='h-16' />
     <span className='my-2 text-xl font-bold text-center'>
-      Título de Mi Aplicación
+      GESTION DE PROYECTOS MINTIC
     </span>
   </div>
 );
