@@ -6,7 +6,7 @@ import PrivateComponent from 'components/PrivateComponent';
 
 const SidebarLinks = () => (
   <ul className='mt-12'>
-    <SidebarRouteImagen to='/perfil' title='Perfil' icon='fas fa-user' />
+    {/* <SidebarRouteImagen to='/perfil' title='Perfil' icon='fas fa-user' /> */}
     <SidebarRoute to='' title='Inicio' icon='fas fa-home' />
     <PrivateComponent roleList={['ADMINISTRADOR']}>
       <SidebarRoute to='/usuarios' title='Usuarios' icon='fas fa-user' />
